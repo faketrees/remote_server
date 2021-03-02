@@ -1,0 +1,15 @@
+<h1>Bands</h1>
+
+<a href="<%= new_band_url %>">Create new Band</a>
+
+<ul>
+    <% @bands.each do |band| %>
+        <li>
+            <%= render "band", band: band, action: 'index' %>
+            <ul>
+                <li>
+                    <%= render "band.albums", band: band, action: 'index'%>
+                </li>
+            </ul>
+        </li>
+</ul>
