@@ -15,22 +15,34 @@ class BandsController < ApplicationController
   end
 
   def index
-    bands.all
+    @band = Band.all
     render :index
   end
 
   def show
-    @band = Band.find_by(params[:id])
+    @band = Band.find_by(id: params[:id])
     render :show
   end
 
   def update
+    @band = Band.find_by(id: params[:id])
+    if @band.update
+      redirect_to band_url(@band)
+    else
+      flash.now[:errors] = "Some error message here, IDK man I am just a message"
+      render :edit
+    end
   end
 
   def destroy
+    @band = Band.find_by(id: params[:id])
+    @band.destroy
+    redirect_to bands_url
   end
 
   def edit
+    @band = Band.find_by(id: params[:id])
+    render :edit
   end
 
   private
