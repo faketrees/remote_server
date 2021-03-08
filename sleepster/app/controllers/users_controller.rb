@@ -38,6 +38,21 @@ class UsersController < ApplicationController
     render :index
   end
 
+  def update
+    # PATCH /users/:id
+    user = User.find_by(id: params[:id])
+
+    if user
+      if user.update(user_params)
+        render json: user
+      else
+        render json: user.errors.full_messages, status: 422
+      end
+    else
+      flash.now[:errors] = "User not found"
+      render :new_session_url
+    end
+  end
 
   private
   def user_params
