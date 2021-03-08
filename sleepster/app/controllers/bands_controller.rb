@@ -1,5 +1,7 @@
 class BandsController < ApplicationController
 
+  attr_accessor :name
+
   def new
     render :new
   end

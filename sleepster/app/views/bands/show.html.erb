@@ -1,2 +1,8 @@
-<h1>Bands#show</h1>
-<p>Find me in app/views/bands/show.html.erb</p>
+<h1><%= @band.name %>'s page</h1>
+
+    <form action="<%= bands_url %>" method="GET">
+        <input type="submit" value="All Bands">
+    </form>
+    <form action="<%= edit_band_url %>" method="GET">
+        <input type="submit" value="Edit Band">
+    </form>

@@ -1,0 +1,16 @@
+<% if action == 'show' %>
+  <a href="<%= bandss_url %>">Bands Index Link</a>
+<% else %>
+  <a href="<%= band_url(band.id) %>">BandPage</a>
+<% end %>
+
+<ul>
+    <li><%= band.name %></li>
+    <form action="<%= bands_url %>" method="GET">
+        <input type="submit" value="all bands">
+    </form>
+    <li>Bands</li>
+        <ul>
+
+        </ul>
+</ul> 
