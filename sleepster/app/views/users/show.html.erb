@@ -1,3 +1,8 @@
 <h1><%= @user.email %>'s page</h1>
 
-
+    <form action="<%= users_url %>" method="GET">
+        <input type="submit" value="all users">
+    </form>
+    <form action="<%= bands_url %>" method="GET">
+        <input type="submit" value="all bands">
+    </form>

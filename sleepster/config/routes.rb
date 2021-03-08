@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   resources :bands
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :destroy, :edit, :update, :index]
 
 end
