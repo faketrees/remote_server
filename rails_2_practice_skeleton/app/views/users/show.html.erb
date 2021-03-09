@@ -1,0 +1,26 @@
+<h1><%= @user.username %>'s page</h1>
+
+
+<% @user.goals.each do |fucks| %>
+    <%= fucks.name %>
+    <%= fucks.details%>
+    <%= "Done" if fucks.status %>
+    <form action="<%= goal_url(fucks) %>" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Goal">
+    </form>
+<% end %>
+
+<form action="<%= user_goals_url(@user) %>" method="POST">Add a New Goal
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label>Name:
+        <input name="goal[name]" value="">
+    </label>
+    <label>Details:
+        <input type="text" name="goal[details]">
+    </label>
+    <input type="radio" name="goal[status]" value="true">
+    <input type="radio" name="goal[status]" value="false">
+    <input type="submit" value="Create Goal">
+</form>

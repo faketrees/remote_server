@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :require_logged_out, only: [:create]
 
     def index
         @user = User.all
@@ -13,7 +14,6 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
-
         render :new
     end
 

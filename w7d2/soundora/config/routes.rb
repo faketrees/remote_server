@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   resources :users
 
   resources :bands do
-    resources :albums, only: [:index]
-    resources :tracks, only: [:index]
+    resources :albums, only: [:new]
   end
 
-  resource :session, only: [:new, :create, :destroy]
+  resources :albums, only: [:index, :show, :create, :edit, :update, :destroy] do
+    resources :tracks, only: [:new]
+  end
+
+  resources :tracks, only: [:show, :create, :edit, :update, :destroy]
+
+  resource :session, only: [:new, :create, :destroy] #there is only one session
 end

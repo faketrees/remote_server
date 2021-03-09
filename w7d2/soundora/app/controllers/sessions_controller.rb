@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :require_logged_in, only: [:destroy]
+  before_action :require_logged_out, only: [:new, :create]
+
   def new
     render :new
   end
@@ -10,7 +13,8 @@ class SessionsController < ApplicationController
       login!(user)
       redirect_to users_url
     else
-      render :new
+      flash.now[:errors] = ["da fuq bro"]
+      render :new #redirect_to use flash, render use flash.now
     end
   end
 

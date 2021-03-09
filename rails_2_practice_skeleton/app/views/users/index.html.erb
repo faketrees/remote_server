@@ -1,0 +1,13 @@
+<h1>All Users</h1>
+
+<a href="<%= new_session_url %>">Create a new user</a>
+
+</div>
+<ul>
+    <% @users.each do |user| %>
+            <a href="<%= user_url(user) %>">
+            <li><%= user.username%></li>
+            </a>
+    <% end %>
+</ul>
+</div>
