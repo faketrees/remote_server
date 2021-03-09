@@ -10,6 +10,7 @@
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete Goal">
     </form>
+    <a href=" <%= edit_goal_url(fucks) %>">Edit Goal</a>
 <% end %>
 
 <form action="<%= user_goals_url(@user) %>" method="POST">Add a New Goal
