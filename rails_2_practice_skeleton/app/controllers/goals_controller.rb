@@ -20,6 +20,27 @@ class GoalsController < ApplicationController
         end
     end
 
+        def edit
+        @goal = current_user.goals.find_by(id: params[:id])
+        render :edit
+    end
+
+    def update
+        @goal = current_user.goalss.find_by(id: params[:id])
+
+        if @goal
+            if @goal.update(goal_params)
+                redirect_to user_url(current_user)
+            else
+                flash[:errors] = ['Invalid Parameters']
+                render :edit
+            end
+        else
+            flash[:errors] = ['User not found']
+            redirect_to user_url(current_user)
+        end
+    end
+
     private
     def goal_params
         params.require(:goal).permit(:name, :details, :status)
