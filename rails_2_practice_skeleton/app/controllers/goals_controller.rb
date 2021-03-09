@@ -1,5 +1,6 @@
 class GoalsController < ApplicationController
     before_action :require_logged_in!
+    before_action :require_user_owns_goals!, only: [:edit]
 
     def create
         @goal = Goal.new(goal_params)
@@ -44,5 +45,10 @@ class GoalsController < ApplicationController
     private
     def goal_params
         params.require(:goal).permit(:name, :details, :status)
+    end
+
+    def require_user_owns_goals!
+        return if current_user.goals.find_by(id: params[:id])
+        render json: 'Forbidden'
     end
 end
